@@ -27,8 +27,25 @@ def sort(a):
             a[i], a[m] = a[m], a[i]
     return a
 
+def quick_sort(a):
+    if len(a) <= 1:
+        return a
+    else:
+        q = random.choice(a)
+        L =[]
+        M = []
+        K = []
+        for elem in a:
+            if elem < q:
+                L.append(elem)
+            elif elem > q:
+                K.append(elem)
+            else:
+                M.append(elem)
+    return quick_sort(L) + M + quick_sort(K)
+
 
 a = gen()
-print(sort(a))
+print(quick_sort(a))
 
 
