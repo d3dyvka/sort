@@ -1,22 +1,26 @@
 import random
+import time
 
 N = int(input())
+f = open('out.txt', 'w')
 
 
 def gen():
     a = list()
-    N = int(input())
     for i in range(N):
         a.append(random.randint(1, 20))
     return a
 
 
 def buble(a):
+
     for j in range(N - 1):
         for i in range(N - j - 1):
             if a[i] > a[i + 1]:
                 a[i], a[i + 1] = a[i + 1], a[i]
     return a
+
+
 def sort(a):
     n = len(a)
     for i in range(n - 1):
@@ -46,6 +50,18 @@ def quick_sort(a):
 
 
 a = gen()
-print(quick_sort(a))
 
+start = time.time()
+buble(a)
+end = (time.time() - start)
+print(end, file=f)
 
+start = time.time()
+sort(a)
+end1 = (time.time() - start)
+print(end1, file=f)
+
+start2 = time.time()
+quick_sort(a)
+end2 = (time.time() - start2)
+print(end2, file=f)
